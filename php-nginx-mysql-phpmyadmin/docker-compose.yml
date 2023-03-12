@@ -39,6 +39,8 @@ services:
     volumes:
       - ./dump:/docker-entrypoint-initdb.d
       - ./.docker/mysql:/var/lib/mysql
+    env_file:
+      - ./src/.env
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MYSQL_DATABASE}
@@ -52,8 +54,9 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
+    env_file:
+      - ./src/.env
     environment:
-      - PMA_ARBITRARY=1
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - PMA_HOST=mysql
       - TZ=Europe/Paris
