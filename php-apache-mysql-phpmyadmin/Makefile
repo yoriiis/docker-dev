@@ -1,4 +1,6 @@
-CERT_DOMAINS=local.app.com
+include ./src/.env
+
+CERT_DOMAINS=${DOMAIN}
 
 # Function to install dependency with Brew only if not already installed
 install_dependency = \
