@@ -4,3 +4,5 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends openssl \
     && rm -rf /var/lib/apt/lists/* \
     && a2enmod ssl
+
+RUN docker-php-ext-install pdo pdo_mysql

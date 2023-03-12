@@ -1,5 +1,4 @@
 CERT_DOMAINS=local.app.com
-PHP_FORMULA=php@8.1
 
 # Function to install dependency with Brew only if not already installed
 install_dependency = \
@@ -19,7 +18,6 @@ install: install-prerequisite certs-install update-hosts
 
 install-prerequisite:
 	@mkdir -p logs .docker/mysql config/certs
-	$(call install_dependency, ${PHP_FORMULA})
 	$(call install_dependency, docker)
 	$(call install_dependency, composer)
 	$(call install_dependency, mkcert)
@@ -42,5 +40,6 @@ stop:
 	docker-compose down -v
 
 uninstall:
+	@mkcert -uninstall
 	@rm -rf ./.docker ./logs ./config/certs
 	@docker-compose rm --force --volumes

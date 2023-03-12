@@ -15,8 +15,6 @@ services:
       - ./config/php-apache/httpd.conf:/etc/apache2/sites-available/000-default.conf
       - ./config/certs:/etc/apache2/certs
       - ./logs:/var/log/apache2
-    networks:
-      - app-local
 
   mysql:
     container_name: mysql
