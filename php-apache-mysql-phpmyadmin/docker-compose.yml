@@ -14,7 +14,7 @@ services:
       - ./src:/var/www/html/
       - ./config/php-apache/httpd.conf:/etc/apache2/sites-available/000-default.conf
       - ./config/certs:/etc/apache2/certs
-      - ./logs:/var/log/apache2
+      - ./.docker/apache/log:/var/log/apache2
 
   mysql:
     container_name: mysql

@@ -16,8 +16,9 @@ install_dependency = \
 install: install-prerequisite install-certs install-composer update-hosts
 
 install-prerequisite:
-	@mkdir -p logs .docker/mysql config/certs
+	@mkdir -p .docker/nginx/log .docker/mysql config/certs
 	$(call install_dependency, docker)
+	$(call install_dependency, docker-compose)
 	$(call install_dependency, composer)
 	$(call install_dependency, mkcert)
 	$(call install_dependency, nss)
@@ -43,5 +44,5 @@ stop:
 
 uninstall:
 	@mkcert -uninstall
-	@rm -rf ./.docker ./logs ./config/certs ./src/vendor
+	@rm -rf ./.docker ./config/certs ./src/vendor
 	@docker-compose rm --force --volumes
